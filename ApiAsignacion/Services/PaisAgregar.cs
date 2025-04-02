@@ -30,6 +30,17 @@ namespace ApiAsignacion.Services
             return JsonConvert.SerializeObject(listaP, Formatting.Indented);
         }
 
+        public string AgregarPais(PaisIn nuevoPais)
+        {
+            // Agregar el nuevo país a la lista.
+            listaP.Add(nuevoPais);
+
+            // Guardar la lista actualizada en el archivo JSON.
+            string jsonString = JsonConvert.SerializeObject(listaP, Formatting.Indented);
+            File.WriteAllText("C:\\Users\\kevin\\source\\repos\\Practica numero 4\\ApiAsignacion\\Json Sample\\Practica4.json", jsonString);
+
+            return "País agregado exitosamente.";
+        }
 
     }
 }
