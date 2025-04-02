@@ -42,6 +42,17 @@ namespace ApiAsignacion.Controllers
 
             return BadRequest("No se pudo agregar el país.");
         }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] PaisIn paisActualizado)
+        {
+            string result = registro.ActualizarPais(id, paisActualizado);
+            if (result == "País actualizado exitosamente.")
+            {
+                return Ok(result);
+            }
+            return NotFound(result);
+        }
     }
 }
  
