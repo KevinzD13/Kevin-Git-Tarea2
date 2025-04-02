@@ -14,15 +14,15 @@ namespace ApiAsignacion.Controllers
 
         IPaises registro;
 
-        public PaisesController (IPaises registro)
+        public PaisesController(IPaises registro)
         {
-           this.registro = registro;
+            this.registro = registro;
         }
         [HttpGet("Mostrar Paises")]
         public IActionResult GetPaises()
         {
-            
-            return Ok(registro.MostrarPaises()); 
+
+            return Ok(registro.MostrarPaises());
         }
 
 
@@ -53,6 +53,19 @@ namespace ApiAsignacion.Controllers
             }
             return NotFound(result);
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            string result = registro.EliminarPais(id);
+            if (result == "País eliminado exitosamente.")
+            {
+                return Ok(result);
+            }
+            return NotFound(result);
+        }
     }
+
+   
 }
  

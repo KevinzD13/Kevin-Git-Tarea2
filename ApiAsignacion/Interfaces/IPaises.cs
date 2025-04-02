@@ -8,5 +8,6 @@ namespace ApiAsignacion.Interfaces
         string MostrarPaises ();
         string AgregarPais(PaisIn nuevoPais);
         string ActualizarPais(int id, PaisIn paisActualizado);
+        string EliminarPais(int id);
     }
 }
