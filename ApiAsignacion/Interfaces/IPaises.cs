@@ -6,9 +6,6 @@ namespace ApiAsignacion.Interfaces
     {
         
         string MostrarPaises ();
-        string MostrarContinentes (string continente);
-        string MayorPoblacion(int numero);
-        string[] Nombre(string nombre);
-
+        string AgregarPais(PaisIn nuevoPais);
     }
 }

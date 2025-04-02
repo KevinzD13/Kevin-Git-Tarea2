@@ -25,7 +25,23 @@ namespace ApiAsignacion.Controllers
             return Ok(registro.MostrarPaises()); 
         }
 
-       
-        
+
+        [HttpPost]
+        public IActionResult Post([FromBody] PaisIn nuevoPais)
+        {
+            if (nuevoPais == null)
+            {
+                return BadRequest("El país no puede ser nulo.");
+            }
+
+            string result = registro.AgregarPais(nuevoPais);
+            if (result == "País agregado exitosamente.")
+            {
+                return CreatedAtAction(nameof(GetPaises), new { id = nuevoPais.Id }, nuevoPais);
+            }
+
+            return BadRequest("No se pudo agregar el país.");
+        }
     }
 }
+ 
