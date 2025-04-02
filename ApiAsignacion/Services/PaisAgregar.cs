@@ -42,5 +42,28 @@ namespace ApiAsignacion.Services
             return "País agregado exitosamente.";
         }
 
+        public string ActualizarPais(int id, PaisIn paisActualizado)
+        {
+            // Buscar el país por ID.
+            var paisExistente = listaP.FirstOrDefault(p => p.Id == id);
+
+            if (paisExistente != null)
+            {
+                // Actualizar los valores del país con los datos del objeto paisActualizado.
+                paisExistente.Pais = paisActualizado.Pais;
+                paisExistente.Continente = paisActualizado.Continente;
+                paisExistente.Poblacion = paisActualizado.Poblacion;
+
+                // Guardar los cambios en el archivo JSON.
+                string jsonString = JsonConvert.SerializeObject(listaP, Formatting.Indented);
+                File.WriteAllText("C:\\Users\\kevin\\source\\repos\\Practica numero 4\\ApiAsignacion\\Json Sample\\Practica4.json", jsonString);
+
+                return "País actualizado exitosamente.";
+            }
+            else
+            {
+                return "El país con el ID especificado no se encontró.";
+            }
+        }
     }
 }
