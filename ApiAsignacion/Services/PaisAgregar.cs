@@ -90,6 +90,27 @@ namespace ApiAsignacion.Services
             return JsonConvert.SerializeObject(paisesContinentes, Formatting.Indented);
         }
 
+        public string MayorPoblacion(int n)
+        {
+            for (int i = 0; i < listaP.Count - 1; i++)
+            {
+                for (int j = 0; j < listaP.Count - 1 - i; j++)
+                {
+                    if (listaP[j].Poblacion < listaP[j + 1].Poblacion)
+                    {
+
+                        var temp = listaP[j];
+                        listaP[j] = listaP[j + 1];
+                        listaP[j + 1] = temp;
+                    }
+                }
+            }
+
+            var paisesConMayorPoblacion = listaP.Take(n).ToList();
+
+            return JsonConvert.SerializeObject(paisesConMayorPoblacion, Formatting.Indented);
+        }
+
     }
 }
 
