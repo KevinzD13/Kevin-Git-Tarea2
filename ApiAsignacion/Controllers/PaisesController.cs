@@ -73,6 +73,17 @@ namespace ApiAsignacion.Controllers
             return Ok(resultado);
         }
 
+        [HttpGet("Mostrar mayor poblacion")]
+
+        public IActionResult GetMayor(int numero)
+        {
+
+            var result = registro.MayorPoblacion(numero);
+            return Ok(result);
+
+
+        }
+
     }
 
 
