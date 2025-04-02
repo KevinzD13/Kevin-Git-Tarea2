@@ -64,8 +64,18 @@ namespace ApiAsignacion.Controllers
             }
             return NotFound(result);
         }
+
+        [HttpGet("Mostrar pais por continente")]
+
+        public IActionResult GetContinentes(string nombreCon)
+        {
+            var resultado = registro.MostrarContinentes(nombreCon);
+            return Ok(resultado);
+        }
+
     }
 
-   
+
+
 }
  
