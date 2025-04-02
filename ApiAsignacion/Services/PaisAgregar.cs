@@ -83,6 +83,13 @@ namespace ApiAsignacion.Services
                 return "El país con el ID especificado no se encontró.";
             }
         }
+
+        public string MostrarContinentes(string continente)
+        {
+            var paisesContinentes = listaP.Where(p => p.Continente == continente);
+            return JsonConvert.SerializeObject(paisesContinentes, Formatting.Indented);
+        }
+
     }
 }
 
