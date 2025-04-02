@@ -65,5 +65,24 @@ namespace ApiAsignacion.Services
                 return "El país con el ID especificado no se encontró.";
             }
         }
+
+        public string EliminarPais(int id)
+        {
+            var paisExistente = listaP.FirstOrDefault(p => p.Id == id);
+            if (paisExistente != null)
+            {
+                listaP.Remove(paisExistente);
+
+                string jsonString = JsonConvert.SerializeObject(listaP, Formatting.Indented);
+                File.WriteAllText("C:\\Users\\kevin\\source\\repos\\Practica numero 4\\ApiAsignacion\\Json Sample\\Practica4.json", jsonString);
+
+                return "País eliminado exitosamente.";
+            }
+            else
+            {
+                return "El país con el ID especificado no se encontró.";
+            }
+        }
     }
 }
+
